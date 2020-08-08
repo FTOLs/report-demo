@@ -1,0 +1,25 @@
+server:
+  port: 8080
+  max-http-header-size: 1024000
+logging:
+  level:
+    cn.jay.repository: trace
+spring:
+  aop:
+    auto: true #启动aop配置
+  freemarker:
+    charset: UTF-8
+    suffix: .html
+    content-type: text/html; charset=utf-8
+    template-loader-path: classpath:/templates
+    static-path-pattern: /static/**
+  redis:
+    # Redis 单机单实例
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+html:
+  convert:
+    fileSavePath:
+    echartsImgSavePath:

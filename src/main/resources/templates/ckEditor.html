@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="editor" style="height: 80%"></div>
+    <button id="btn">保存</button>
+</body>
+<script src="https://unpkg.com/wangeditor@3.1.1/release/wangEditor.min.js"></script>
+<script src="/static/js/jquery-1.9.1.min.js"></script>
+<script>
+    var E = window.wangEditor
+    var editor = new E('#editor')
+    editor.customConfig.showLinkImg = false
+    editor.create()
+    $(function(){
+        $('#btn').on('click', function(){
+            var html = editor.txt.html()
+            console.log(html);
+            $.post("http://192.168.20.56:8080/saveReport", {html: html}, function(data){
+                if(data == 'ok'){
+                    alert("保存成功");
+                }
+            });
+
+        })
+    });
+</script>
+</html>
